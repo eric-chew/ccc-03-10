@@ -1,4 +1,4 @@
-from database import cursor, connection
+from main import db
 from flask import Blueprint, request, jsonify
 authors = Blueprint('authors', __name__, url_prefix='/authors')
 
