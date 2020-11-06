@@ -1,6 +1,7 @@
 from models.Book import Book
 from main import db
 from flask import Blueprint, request, jsonify
+from schemas.BookSchema import books_schema
 books = Blueprint('books', __name__, url_prefix='/books')
 
 @books.route("/", methods=["GET"])
@@ -10,7 +11,8 @@ def book_index():
     # cursor.execute(sql)
     # books = cursor.fetchall()
     # return jsonify(books)
-    pass
+    books = Book.query.all()
+    return jsonify(books_schema.dump(books))
 
 # @books.route("/", methods=["POST"])
 # def book_create():
